@@ -11,42 +11,12 @@ class AppBloc {
   static final messageBloc = MessageBloc();
 
   static final List<BlocProvider> providers = [
-    BlocProvider<ApplicationCubit>(
-      create: (context) => applicationCubit,
-    ),
-    BlocProvider<UserCubit>(
-      create: (context) => userCubit,
-    ),
-    BlocProvider<LanguageCubit>(
-      create: (context) => languageCubit,
-    ),
-    BlocProvider<ThemeCubit>(
-      create: (context) => themeCubit,
-    ),
-    BlocProvider<AuthenticationCubit>(
-      create: (context) => authenticateCubit,
-    ),
-    // BlocProvider<LoginCubit>(
-    //   create: (context) => loginCubit,
-    // ),
-    // BlocProvider<HomeCubit>(
-    //   create: (context) => homeCubit,
-    // ),
-    // BlocProvider<DiscoveryCubit>(
-    //   create: (context) => discoveryCubit,
-    // ),
-    // BlocProvider<WishListCubit>(
-    //   create: (context) => wishListCubit,
-    // ),
-    // BlocProvider<ReviewCubit>(
-    //   create: (context) => reviewCubit,
-    // ),
-    BlocProvider<MessageBloc>(
-      create: (context) => messageBloc,
-    ),
-    // BlocProvider<SubmitCubit>(
-    //   create: (context) => submitCubit,
-    // ),
+    BlocProvider<ApplicationCubit>(create: (context) => applicationCubit),
+    BlocProvider<UserCubit>(create: (context) => userCubit),
+    BlocProvider<LanguageCubit>(create: (context) => languageCubit),
+    BlocProvider<ThemeCubit>(create: (context) => themeCubit),
+    BlocProvider<AuthenticationCubit>(create: (context) => authenticateCubit),
+    BlocProvider<MessageBloc>(create: (context) => messageBloc),
   ];
 
   static void dispose() {
@@ -54,14 +24,8 @@ class AppBloc {
     userCubit.close();
     languageCubit.close();
     themeCubit.close();
-    // homeCubit.close();
-    // discoveryCubit.close();
-    // wishListCubit.close();
     authenticateCubit.close();
-    // loginCubit.close();
-    // reviewCubit.close();
-    // messageBloc.close();
-    // submitCubit.close();
+    messageBloc.close();
   }
 
   ///Singleton factory
