@@ -1,33 +1,17 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:rxdart/rxdart.dart';
 
-import 'bloc.dart';
+import 'message_event.dart';
+import 'message_state.dart';
+
+EventTransformer<T> debounce<T>(Duration duration) {
+  return (events, mapper) => events.debounceTime(duration).flatMap(mapper);
+}
 
 class MessageBloc extends Bloc<MessageEvent, MessageState> {
-  MessageBloc() : super(MessageInit());
-
-  @override
-  Stream<Transition<MessageEvent, MessageState>> transformEvents(
-    Stream<MessageEvent> events,
-    TransitionFunction<MessageEvent, MessageState> transitionFn,
-  ) {
-    final debounceStream = events.where((event) {
-      return event is OnMessage;
-    }).debounceTime(
-      const Duration(milliseconds: 500),
-    );
-    return super.transformEvents(
-      debounceStream,
-      transitionFn,
-    );
-  }
-
-  @override
-  Stream<MessageState> mapEventToState(MessageEvent event) async* {
-    if (event is OnMessage) {
-      yield MessageShow(text: event.message);
-    }
+  MessageBloc() : super(MessageInit()) {
+    on<OnMessage>((event, emit) {
+      emit(MessageShow(text: event.message));
+    }, transformer: debounce(const Duration(milliseconds: 500)));
   }
 }

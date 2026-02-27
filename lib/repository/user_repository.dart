@@ -7,7 +7,6 @@ import 'package:basic_app/models/model.dart';
 import 'package:basic_app/utils/utils.dart';
 
 class UserRepository {
-  ///Fetch api login
   static Future<UserModel?> login({
     required String username,
     required String password,
@@ -22,6 +21,7 @@ class UserRepository {
       return UserModel.fromJson(response.data);
     }
     AppBloc.messageBloc.add(OnMessage(message: response.message));
+    return null;
   }
 
   ///Fetch api validToken
@@ -35,9 +35,7 @@ class UserRepository {
   }
 
   ///Fetch api change Password
-  static Future<bool> changePassword({
-    required String password,
-  }) async {
+  static Future<bool> changePassword({required String password}) async {
     final Map<String, dynamic> params = {"password": password};
     final response = await Api.requestChangePassword(params);
     AppBloc.messageBloc.add(OnMessage(message: response.message));
@@ -118,6 +116,7 @@ class UserRepository {
     if (result != null) {
       return UserModel.fromJson(jsonDecode(result));
     }
+    return null;
   }
 
   ///Fetch User
@@ -127,6 +126,7 @@ class UserRepository {
       return UserModel.fromJson(response.data);
     }
     AppBloc.messageBloc.add(OnMessage(message: response.message));
+    return null;
   }
 
   ///Delete User

@@ -22,39 +22,33 @@ class UtilTheme {
           secondary: theme.secondary,
         );
         break;
-      default:
     }
 
-    final isDark = colorScheme!.brightness == Brightness.dark;
-    final appBarColor = isDark ? colorScheme.surface : colorScheme.background;
+    final isDark = colorScheme.brightness == Brightness.dark;
+    final appBarColor = colorScheme.surface;
     final indicatorColor = isDark ? colorScheme.onSurface : colorScheme.primary;
 
     return ThemeData(
       brightness: colorScheme.brightness,
       primaryColor: colorScheme.primary,
-      primaryColorBrightness: colorScheme.brightness,
       appBarTheme: AppBarTheme(
         backgroundColor: appBarColor,
         foregroundColor: isDark ? Colors.white : Colors.black,
-        shadowColor: isDark ? null : colorScheme.onSurface.withOpacity(0.2),
+        shadowColor: isDark
+            ? null
+            : colorScheme.onSurface.withValues(alpha: 0.2),
       ),
-      canvasColor: colorScheme.background,
-      scaffoldBackgroundColor: colorScheme.background,
-      bottomAppBarColor: colorScheme.surface,
+      canvasColor: colorScheme.surface,
+      scaffoldBackgroundColor: colorScheme.surface,
       cardColor: colorScheme.surface,
-      dividerColor: colorScheme.onSurface.withOpacity(0.12),
-      backgroundColor: colorScheme.background,
-      dialogBackgroundColor: colorScheme.background,
-      errorColor: colorScheme.error,
-      indicatorColor: indicatorColor,
+      dividerColor: colorScheme.onSurface.withValues(alpha: 0.12),
       applyElevationOverlayColor: isDark,
       colorScheme: colorScheme,
       fontFamily: font,
-      dialogTheme: DialogTheme(
+      tabBarTheme: TabBarThemeData(indicatorColor: indicatorColor),
+      dialogTheme: DialogThemeData(
         backgroundColor: colorScheme.surface,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
       bottomSheetTheme: BottomSheetThemeData(
         backgroundColor: colorScheme.surface,
@@ -66,11 +60,10 @@ class UtilTheme {
           ),
         ),
       ),
-      dividerTheme: const DividerThemeData(
-        thickness: 0.8,
-      ),
-      bottomAppBarTheme: const BottomAppBarTheme(
-        shape: CircularNotchedRectangle(),
+      dividerTheme: const DividerThemeData(thickness: 0.8),
+      bottomAppBarTheme: BottomAppBarThemeData(
+        color: colorScheme.surface,
+        shape: const CircularNotchedRectangle(),
       ),
     );
   }

@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:intl/intl.dart';
@@ -7,17 +9,17 @@ class UtilIcon {
     'fiveHundredPx': FontAwesomeIcons.fiveHundredPx,
     'accessibleIcon': FontAwesomeIcons.accessibleIcon,
     'accusoft': FontAwesomeIcons.accusoft,
-    'acquisitionsIncorporated': FontAwesomeIcons.acquisitionsIncorporated,
+    'acquisitionsIncorporated': FontAwesomeIcons.amilia,
     'ad': FontAwesomeIcons.ad,
     'addressBook': FontAwesomeIcons.addressBook,
     'solidAddressBook': FontAwesomeIcons.solidAddressBook,
     'addressCard': FontAwesomeIcons.addressCard,
     'solidAddressCard': FontAwesomeIcons.solidAddressCard,
-    'adjust': FontAwesomeIcons.adjust,
+    'adjust': FontAwesomeIcons.circleHalfStroke,
     'adn': FontAwesomeIcons.adn,
     'adversal': FontAwesomeIcons.adversal,
     'affiliatetheme': FontAwesomeIcons.affiliatetheme,
-    'airFreshener': FontAwesomeIcons.airFreshener,
+    'airFreshener': FontAwesomeIcons.sprayCanSparkles,
     'airbnb': FontAwesomeIcons.airbnb,
     'algolia': FontAwesomeIcons.algolia,
     'alignCenter': FontAwesomeIcons.alignCenter,
@@ -1006,7 +1008,6 @@ class UtilIcon {
     'penSquare': FontAwesomeIcons.penSquare,
     'pencilAlt': FontAwesomeIcons.pencilAlt,
     'pencilRuler': FontAwesomeIcons.pencilRuler,
-    'pennyArcade': FontAwesomeIcons.pennyArcade,
     'peopleCarry': FontAwesomeIcons.peopleCarry,
     'pepperHot': FontAwesomeIcons.pepperHot,
     'percent': FontAwesomeIcons.percent,
@@ -1384,7 +1385,6 @@ class UtilIcon {
     'trashRestoreAlt': FontAwesomeIcons.trashRestoreAlt,
     'tree': FontAwesomeIcons.tree,
     'trello': FontAwesomeIcons.trello,
-    'tripadvisor': FontAwesomeIcons.tripadvisor,
     'trophy': FontAwesomeIcons.trophy,
     'truck': FontAwesomeIcons.truck,
     'truckLoading': FontAwesomeIcons.truckLoading,
@@ -1451,7 +1451,6 @@ class UtilIcon {
     'utensilSpoon': FontAwesomeIcons.utensilSpoon,
     'utensils': FontAwesomeIcons.utensils,
     'vaadin': FontAwesomeIcons.vaadin,
-    'vectorSquare': FontAwesomeIcons.vectorSquare,
     'venus': FontAwesomeIcons.venus,
     'venusDouble': FontAwesomeIcons.venusDouble,
     'venusMars': FontAwesomeIcons.venusMars,
@@ -1536,7 +1535,7 @@ class UtilIcon {
     'yoast': FontAwesomeIcons.yoast,
     'youtube': FontAwesomeIcons.youtube,
     'youtubeSquare': FontAwesomeIcons.youtubeSquare,
-    'zhihu': FontAwesomeIcons.zhihu
+    'zhihu': FontAwesomeIcons.zhihu,
   };
 
   static IconData getIconData(String? name) {
@@ -1576,6 +1575,7 @@ class UtilIcon {
       }
       return result;
     }
+    return null;
   }
 
   ///Singleton factory

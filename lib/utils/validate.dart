@@ -32,7 +32,6 @@ class UtilValidator {
     if (data.isEmpty) return null;
 
     switch (type) {
-
       ///Email pattern
       case ValidateType.email:
         final emailRegex = RegExp(
@@ -69,6 +68,7 @@ class UtilValidator {
         break;
       default:
     }
+    return null;
   }
 
   ///Singleton factory

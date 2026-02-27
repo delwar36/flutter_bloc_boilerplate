@@ -6,18 +6,18 @@ import '../configs/config.dart';
 import '../models/model.dart';
 import '../utils/logger.dart';
 
-Map<String, dynamic> dioErrorHandle(DioError error) {
+Map<String, dynamic> dioErrorHandle(DioException error) {
   UtilLogger.log("ERROR", error);
 
   switch (error.type) {
-    case DioErrorType.response:
-      UtilLogger.log("DioErrorType.response", error.response);
+    case DioExceptionType.badResponse:
+      UtilLogger.log("DioExceptionType.badResponse", error.response);
       if (error.response!.data is Map<String, dynamic>) {
         return error.response!.data;
       }
       return {"success": false, "message": "json_format_error"};
-    case DioErrorType.sendTimeout:
-    case DioErrorType.receiveTimeout:
+    case DioExceptionType.sendTimeout:
+    case DioExceptionType.receiveTimeout:
       return {"success": false, "message": "request_time_out"};
 
     default:
@@ -28,8 +28,8 @@ Map<String, dynamic> dioErrorHandle(DioError error) {
 class HTTPManager {
   BaseOptions baseOptions = BaseOptions(
     baseUrl: Application.domain,
-    connectTimeout: 10000,
-    receiveTimeout: 10000,
+    connectTimeout: const Duration(seconds: 10),
+    receiveTimeout: const Duration(seconds: 10),
     contentType: Headers.formUrlEncodedContentType,
     responseType: ResponseType.json,
   );
@@ -81,7 +81,7 @@ class HTTPManager {
         },
       );
       return response.data;
-    } on DioError catch (error) {
+    } on DioException catch (error) {
       return dioErrorHandle(error);
     }
   }
@@ -100,12 +100,9 @@ class HTTPManager {
     Dio dio = Dio(requestOptions);
 
     try {
-      final response = await dio.get(
-        url,
-        queryParameters: params,
-      );
+      final response = await dio.get(url, queryParameters: params);
       return response.data;
-    } on DioError catch (error) {
+    } on DioException catch (error) {
       return dioErrorHandle(error);
     }
   }

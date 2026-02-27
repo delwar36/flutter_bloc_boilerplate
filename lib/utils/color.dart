@@ -24,6 +24,6 @@ class UtilColor {
 
 extension ColorToHex on Color {
   String get toHex {
-    return value.toRadixString(16);
+    return toARGB32().toRadixString(16);
   }
 }

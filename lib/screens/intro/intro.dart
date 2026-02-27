@@ -35,77 +35,54 @@ class _IntroState extends State<Intro> {
     final List<PageViewModel> pages = [
       PageViewModel(
         pageColor: const Color(0xff93b7b0),
-        bubble: const Icon(
-          Icons.shop,
-          color: Colors.white,
-        ),
+        bubble: const Icon(Icons.shop, color: Colors.white),
         body: Text(
           "Favorite brands and hottest trends.",
-          style: Theme.of(context).textTheme.headline6!.copyWith(
-                color: Colors.white,
-              ),
+          style: Theme.of(
+            context,
+          ).textTheme.bodySmall!.copyWith(color: Colors.white),
         ),
         title: Text(
           Translate.of(context).translate('shopping'),
-          style: Theme.of(context)
-              .textTheme
-              .headline5!
-              .copyWith(color: Colors.white),
+          style: Theme.of(
+            context,
+          ).textTheme.bodyLarge!.copyWith(color: Colors.white),
         ),
-        mainImage: Image.asset(
-          Images.intro1,
-          fit: BoxFit.contain,
-        ),
+        mainImage: Image.asset(Images.intro1, fit: BoxFit.contain),
       ),
       PageViewModel(
         pageColor: const Color(0xff93b7b0),
-        bubble: const Icon(
-          Icons.phonelink,
-          color: Colors.white,
-        ),
+        bubble: const Icon(Icons.phonelink, color: Colors.white),
         body: Text(
           Translate.of(context).translate('shopping_intro'),
-          style: Theme.of(context)
-              .textTheme
-              .headline6!
-              .copyWith(color: Colors.white),
+          style: Theme.of(
+            context,
+          ).textTheme.bodySmall!.copyWith(color: Colors.white),
         ),
         title: Text(
           Translate.of(context).translate('payment'),
-          style: Theme.of(context)
-              .textTheme
-              .headline5!
-              .copyWith(color: Colors.white),
+          style: Theme.of(
+            context,
+          ).textTheme.bodyMedium!.copyWith(color: Colors.white),
         ),
-        mainImage: Image.asset(
-          Images.intro2,
-          fit: BoxFit.contain,
-        ),
+        mainImage: Image.asset(Images.intro2, fit: BoxFit.contain),
       ),
       PageViewModel(
         pageColor: const Color(0xff93b7b0),
-        bubble: const Icon(
-          Icons.home,
-          color: Colors.white,
-        ),
+        bubble: const Icon(Icons.home, color: Colors.white),
         body: Text(
           Translate.of(context).translate('payment_intro'),
-          style: Theme.of(context)
-              .textTheme
-              .headline6!
-              .copyWith(color: Colors.white),
+          style: Theme.of(
+            context,
+          ).textTheme.bodySmall!.copyWith(color: Colors.white),
         ),
         title: Text(
           Translate.of(context).translate('location'),
-          style: Theme.of(context)
-              .textTheme
-              .headline5!
-              .copyWith(color: Colors.white),
+          style: Theme.of(
+            context,
+          ).textTheme.bodyLarge!.copyWith(color: Colors.white),
         ),
-        mainImage: Image.asset(
-          Images.intro3,
-          fit: BoxFit.contain,
-        ),
+        mainImage: Image.asset(Images.intro3, fit: BoxFit.contain),
       ),
     ];
 
@@ -119,9 +96,9 @@ class _IntroState extends State<Intro> {
         nextText: Text(Translate.of(context).translate('next')),
         skipText: Text(Translate.of(context).translate('skip')),
         backText: Text(Translate.of(context).translate('back')),
-        pageButtonTextStyles: Theme.of(context).textTheme.button!.copyWith(
-              color: Colors.white,
-            ),
+        pageButtonTextStyles: Theme.of(
+          context,
+        ).textTheme.bodyLarge!.copyWith(color: Colors.white),
       ),
     );
   }

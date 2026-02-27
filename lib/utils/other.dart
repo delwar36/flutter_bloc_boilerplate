@@ -44,6 +44,7 @@ class UtilOther {
     } catch (e) {
       UtilLogger.log("ERROR", e);
     }
+    return null;
   }
 
   static Future<String?> getDeviceToken() async {

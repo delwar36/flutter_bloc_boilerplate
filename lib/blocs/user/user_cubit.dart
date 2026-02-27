@@ -28,6 +28,7 @@ class UserCubit extends Cubit<UserModel?> {
       onSaveUser(sync);
       return sync;
     }
+    return null;
   }
 
   ///Event save user

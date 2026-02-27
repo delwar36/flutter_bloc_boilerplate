@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 // import 'package:basic_app/models/model.dart';
 // import 'package:basic_app/screens/screen.dart';
@@ -286,12 +285,8 @@ class Routes {
         return MaterialPageRoute(
           builder: (context) {
             return Scaffold(
-              appBar: AppBar(
-                title: const Text("Not Found"),
-              ),
-              body: Center(
-                child: Text('No path for ${settings.name}'),
-              ),
+              appBar: AppBar(title: const Text("Not Found")),
+              body: Center(child: Text('No path for ${settings.name}')),
             );
           },
         );
