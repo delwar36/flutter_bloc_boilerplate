@@ -5,6 +5,7 @@ import 'package:bloc_boilerplate/configs/config.dart';
 import 'package:bloc_boilerplate/utils/utils.dart';
 import 'package:bloc_boilerplate/ui/widgets/app_button.dart';
 import 'package:bloc_boilerplate/ui/widgets/app_text_input.dart';
+import 'package:bloc_boilerplate/ui/widgets/theme_toggle_button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -71,7 +72,6 @@ class _LoginScreenState extends State<LoginScreen> {
         }
       },
       child: Scaffold(
-        backgroundColor: Colors.white,
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -79,7 +79,11 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 60),
+                  const Align(
+                    alignment: Alignment.topRight,
+                    child: ThemeToggleButton(),
+                  ),
+                  const SizedBox(height: 20),
                   Center(
                     child: Container(
                       padding: const EdgeInsets.all(16),
@@ -98,18 +102,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   Center(
                     child: Text(
                       Translate.of(context).translate("sign_in"),
-                      style: const TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black87,
-                      ),
+                      style: Theme.of(context).textTheme.headlineMedium
+                          ?.copyWith(fontWeight: FontWeight.bold),
                     ),
                   ),
                   const SizedBox(height: 8),
                   Center(
                     child: Text(
                       "Access your account securely",
-                      style: TextStyle(fontSize: 16, color: Colors.grey[600]),
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Theme.of(context).hintColor,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 48),
@@ -138,7 +141,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         _obscurePassword
                             ? Icons.visibility_off_outlined
                             : Icons.visibility_outlined,
-                        color: Colors.grey,
                       ),
                       onPressed: () =>
                           setState(() => _obscurePassword = !_obscurePassword),
@@ -175,7 +177,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       Text(
                         "Don't have an account? ",
-                        style: TextStyle(color: Colors.grey[600]),
+                        style: TextStyle(color: Theme.of(context).hintColor),
                       ),
                       TextButton(
                         onPressed: () {},

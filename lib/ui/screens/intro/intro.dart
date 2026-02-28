@@ -3,6 +3,7 @@ import 'package:intro_views_flutter/intro_views_flutter.dart';
 import 'package:bloc_boilerplate/blocs/bloc.dart';
 import 'package:bloc_boilerplate/configs/config.dart';
 import 'package:bloc_boilerplate/utils/utils.dart';
+import 'package:bloc_boilerplate/ui/widgets/theme_toggle_button.dart';
 
 class Intro extends StatefulWidget {
   const Intro({Key? key}) : super(key: key);
@@ -88,17 +89,30 @@ class _IntroState extends State<Intro> {
 
     ///Build Page
     return Scaffold(
-      body: IntroViewsFlutter(
-        pages,
-        onTapSkipButton: _onCompleted,
-        onTapDoneButton: _onCompleted,
-        doneText: Text(Translate.of(context).translate('done')),
-        nextText: Text(Translate.of(context).translate('next')),
-        skipText: Text(Translate.of(context).translate('skip')),
-        backText: Text(Translate.of(context).translate('back')),
-        pageButtonTextStyles: Theme.of(
-          context,
-        ).textTheme.bodyLarge!.copyWith(color: Colors.white),
+      body: Stack(
+        children: [
+          IntroViewsFlutter(
+            pages,
+            onTapSkipButton: _onCompleted,
+            onTapDoneButton: _onCompleted,
+            doneText: Text(Translate.of(context).translate('done')),
+            nextText: Text(Translate.of(context).translate('next')),
+            skipText: Text(Translate.of(context).translate('skip')),
+            backText: Text(Translate.of(context).translate('back')),
+            pageButtonTextStyles: Theme.of(
+              context,
+            ).textTheme.bodyLarge!.copyWith(color: Colors.white),
+          ),
+          SafeArea(
+            child: Align(
+              alignment: Alignment.topRight,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ThemeToggleButton(),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
