@@ -158,11 +158,19 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
     emit(AuthenticationState.success);
   }
 
-  void onClear() {
+  void onLock() {
+    emit(AuthenticationState.locked);
+  }
+
+  void onLogout() {
     /// Notify
-    emit(AuthenticationState.empty);
+    emit(AuthenticationState.fail);
 
     ///Delete user
     AppBloc.userCubit.onDeleteUser();
+  }
+
+  void onClear() {
+    onLogout();
   }
 }

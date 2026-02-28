@@ -104,10 +104,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         ).primaryColor.withValues(alpha: 0.1),
                         shape: BoxShape.circle,
                       ),
-                      child: Icon(
-                        Icons.wallet,
-                        size: 40,
-                        color: Theme.of(context).primaryColor,
+                      // child: Icon(
+                      //   Icons.wallet,
+                      //   size: 40,
+                      //   color: Theme.of(context).primaryColor,
+                      // ),
+                      child: Image.asset(
+                        "assets/images/logo.png",
+                        width: 40,
+                        height: 40,
                       ),
                     ),
                   ),
