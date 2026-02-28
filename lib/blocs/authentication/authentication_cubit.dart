@@ -3,7 +3,6 @@ import 'package:bloc/bloc.dart';
 import 'package:bloc_boilerplate/blocs/bloc.dart';
 import 'package:bloc_boilerplate/configs/config.dart';
 import 'package:bloc_boilerplate/models/model.dart';
-import 'package:bloc_boilerplate/utils/utils.dart';
 import 'package:local_auth/local_auth.dart';
 
 class AuthenticationCubit extends Cubit<AuthenticationState> {
@@ -129,8 +128,22 @@ class AuthenticationCubit extends Cubit<AuthenticationState> {
         }
       }
     } catch (e) {
-      UtilLogger.log("BIOMETRIC ERROR", e);
-      emit(AuthenticationState.fail);
+      if (e is LocalAuthException) {
+        if (e.code == LocalAuthExceptionCode.userCanceled) {
+          AppBloc.messageBloc.add(
+            OnMessage(message: "Biometric authentication cancelled"),
+          );
+        } else {
+          AppBloc.messageBloc.add(
+            OnMessage(message: "Biometric authentication failed"),
+          );
+        }
+      } else {
+        AppBloc.messageBloc.add(
+          OnMessage(message: "Biometric authentication failed"),
+        );
+      }
+      emit(AuthenticationState.locked);
     }
   }
 
