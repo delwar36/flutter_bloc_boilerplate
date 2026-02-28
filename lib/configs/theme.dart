@@ -6,15 +6,10 @@ enum DarkOption { dynamic, alwaysOn, alwaysOff }
 
 class AppTheme {
   ///Default font
-  static const String defaultFont = "Raleway";
+  static const String defaultFont = "OpenSans";
 
   ///List Font support
-  static final List<String> fontSupport = [
-    "ProximaNova",
-    "Raleway",
-    "Roboto",
-    "Merriweather",
-  ];
+  static final List<String> fontSupport = ["OpenSans", "Roboto"];
 
   ///Default Theme
   static final ThemeModel defaultTheme = ThemeModel.fromJson({

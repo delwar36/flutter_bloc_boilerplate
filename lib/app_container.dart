@@ -56,18 +56,7 @@ class _AppContainerState extends State<AppContainer> {
         builder: (context, authentication) {
           UtilLogger.log(authentication.toString());
           if (authentication == AuthenticationState.success) {
-            return Scaffold(
-              body: Container(
-                child: Center(child: Text("Your App Widgets Here")),
-              ),
-              floatingActionButton: FloatingActionButton(
-                backgroundColor: Theme.of(context).primaryColor,
-                onPressed: () {
-                  //
-                },
-                child: const Icon(Icons.add, color: Colors.white),
-              ),
-            );
+            return const HomeScreen();
           }
           if (authentication == AuthenticationState.loading) {
             return const SplashScreen();
