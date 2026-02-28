@@ -1,10 +1,11 @@
 import 'dart:convert';
 
-import 'package:basic_app/api/api.dart';
-import 'package:basic_app/blocs/bloc.dart';
-import 'package:basic_app/configs/config.dart';
-import 'package:basic_app/models/model.dart';
-import 'package:basic_app/utils/utils.dart';
+import 'package:bloc_boilerplate/api/api.dart';
+import 'package:bloc_boilerplate/api/user_api.dart';
+import 'package:bloc_boilerplate/blocs/bloc.dart';
+import 'package:bloc_boilerplate/configs/config.dart';
+import 'package:bloc_boilerplate/models/model.dart';
+import 'package:bloc_boilerplate/utils/utils.dart';
 
 class UserRepository {
   static Future<UserModel?> login({
@@ -15,7 +16,7 @@ class UserRepository {
       "username": username,
       "password": password,
     };
-    final response = await Api.requestLogin(params);
+    final response = await UserApi.requestLogin(params);
 
     if (response.success) {
       return UserModel.fromJson(response.data);
@@ -26,7 +27,7 @@ class UserRepository {
 
   ///Fetch api validToken
   static Future<bool> validateToken() async {
-    final response = await Api.requestValidateToken();
+    final response = await UserApi.requestValidateToken();
     if (response.success) {
       return true;
     }
@@ -37,7 +38,7 @@ class UserRepository {
   ///Fetch api change Password
   static Future<bool> changePassword({required String password}) async {
     final Map<String, dynamic> params = {"password": password};
-    final response = await Api.requestChangePassword(params);
+    final response = await UserApi.requestChangePassword(params);
     AppBloc.messageBloc.add(OnMessage(message: response.message));
     if (response.success) {
       return true;
@@ -48,7 +49,7 @@ class UserRepository {
   ///Fetch api forgot Password
   static Future<bool> forgotPassword({required String email}) async {
     final Map<String, dynamic> params = {"email": email};
-    final response = await Api.requestForgotPassword(params);
+    final response = await UserApi.requestForgotPassword(params);
     AppBloc.messageBloc.add(OnMessage(message: response.message));
     if (response.success) {
       return true;
@@ -67,7 +68,7 @@ class UserRepository {
       "password": password,
       "email": email,
     };
-    final response = await Api.requestRegister(params);
+    final response = await UserApi.requestRegister(params);
     AppBloc.messageBloc.add(OnMessage(message: response.message));
     if (response.success) {
       return true;
@@ -92,7 +93,7 @@ class UserRepository {
     if (imageID != null) {
       params['listar_user_photo'] = imageID;
     }
-    final response = await Api.requestChangeProfile(params);
+    final response = await UserApi.requestChangeProfile(params);
     AppBloc.messageBloc.add(OnMessage(message: response.message));
 
     //Case success
@@ -121,7 +122,7 @@ class UserRepository {
 
   ///Fetch User
   static Future<UserModel?> fetchUser() async {
-    final response = await Api.requestUser();
+    final response = await UserApi.requestUser();
     if (response.success) {
       return UserModel.fromJson(response.data);
     }

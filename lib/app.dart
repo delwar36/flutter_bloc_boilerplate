@@ -4,9 +4,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import './app_container.dart';
 import './blocs/bloc.dart';
 import './configs/config.dart';
-import './screens/screen.dart';
+import './ui/ui.dart';
 import './utils/utils.dart';
-
 
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);

@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:basic_app/blocs/bloc.dart';
-import 'package:basic_app/configs/config.dart';
-import 'package:basic_app/models/model.dart';
-import 'package:basic_app/utils/utils.dart';
+import 'package:bloc_boilerplate/blocs/bloc.dart';
+import 'package:bloc_boilerplate/configs/config.dart';
+import 'package:bloc_boilerplate/models/model.dart';
+import 'package:bloc_boilerplate/utils/utils.dart';
 
 class ThemeState {
   final ThemeModel theme;

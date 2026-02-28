@@ -1,5 +1,5 @@
-import 'package:basic_app/models/model.dart';
-import 'package:basic_app/utils/utils.dart';
+import 'package:bloc_boilerplate/models/model.dart';
+import 'package:bloc_boilerplate/utils/utils.dart';
 
 class Application {
   static const bool debug = false;

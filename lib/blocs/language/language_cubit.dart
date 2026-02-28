@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:basic_app/configs/config.dart';
-import 'package:basic_app/utils/utils.dart';
+import 'package:bloc_boilerplate/configs/config.dart';
+import 'package:bloc_boilerplate/utils/utils.dart';
 
 class LanguageCubit extends Cubit<Locale> {
   LanguageCubit() : super(AppLanguage.defaultLanguage);
@@ -11,9 +11,6 @@ class LanguageCubit extends Cubit<Locale> {
     emit(locale);
 
     ///Preference save
-    UtilPreferences.setString(
-      Preferences.language,
-      locale.languageCode,
-    );
+    UtilPreferences.setString(Preferences.language, locale.languageCode);
   }
 }

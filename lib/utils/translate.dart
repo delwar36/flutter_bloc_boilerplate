@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:basic_app/app_locale_delegate.dart';
-import 'package:basic_app/utils/utils.dart';
+import 'package:bloc_boilerplate/app_locale_delegate.dart';
+import 'package:bloc_boilerplate/utils/utils.dart';
 
 class Translate {
   final Locale locale;

@@ -4,4 +4,6 @@ export 'image.dart';
 export 'language.dart';
 export 'preferences.dart';
 export 'routes.dart';
+export 'secure_storage.dart';
 export 'theme.dart';
+export 'http_manager.dart';

@@ -1,13 +1,13 @@
 import 'dart:io';
 
-import 'package:device_info/device_info.dart';
+import 'package:device_info_plus/device_info_plus.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:basic_app/models/model.dart';
-import 'package:basic_app/utils/utils.dart';
+import 'package:bloc_boilerplate/models/model.dart';
+import 'package:bloc_boilerplate/utils/utils.dart';
 
 class UtilOther {
-  static fieldFocusChange(
+  static void fieldFocusChange(
     BuildContext context,
     FocusNode current,
     FocusNode next,
@@ -16,7 +16,7 @@ class UtilOther {
     FocusScope.of(context).requestFocus(next);
   }
 
-  static hiddenKeyboard(BuildContext context) {
+  static void hiddenKeyboard(BuildContext context) {
     FocusScope.of(context).requestFocus(FocusNode());
   }
 
@@ -26,7 +26,7 @@ class UtilOther {
       if (Platform.isAndroid) {
         final android = await deviceInfoPlugin.androidInfo;
         return DeviceModel(
-          uuid: android.androidId,
+          uuid: android.id,
           model: "Android",
           version: android.version.sdkInt.toString(),
           type: android.model,

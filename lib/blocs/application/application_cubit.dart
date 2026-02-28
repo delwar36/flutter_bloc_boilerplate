@@ -3,11 +3,11 @@ import 'dart:convert';
 import 'package:bloc/bloc.dart';
 // import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:basic_app/blocs/bloc.dart';
-import 'package:basic_app/configs/config.dart';
-import 'package:basic_app/models/model.dart';
-// import 'package:basic_app/repository/repository.dart';
-import 'package:basic_app/utils/utils.dart';
+import 'package:bloc_boilerplate/blocs/bloc.dart';
+import 'package:bloc_boilerplate/configs/config.dart';
+import 'package:bloc_boilerplate/models/model.dart';
+// import 'package:bloc_boilerplate/repository/repository.dart';
+import 'package:bloc_boilerplate/utils/utils.dart';
 
 class ApplicationCubit extends Cubit<ApplicationState> {
   ApplicationCubit() : super(ApplicationState.loading);
@@ -22,6 +22,9 @@ class ApplicationCubit extends Cubit<ApplicationState> {
 
     ///Setup SharedPreferences
     await Preferences.setPreferences();
+
+    ///Setup SecureStorage
+    await SecureStorage.setSecureStorage();
 
     ///Read/Save Device Information
     await Application.setDevice();

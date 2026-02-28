@@ -1,4 +1,4 @@
-name: basic_app
+name: bloc_boilerplate
 description: A new Flutter project.
 
 publish_to: 'none'
@@ -17,15 +17,17 @@ dependencies:
   cupertino_icons: ^1.0.3
   bloc: ^9.2.0
   flutter_bloc: ^9.1.1
-  shared_preferences: ^2.0.7
+  shared_preferences: ^2.5.4
   font_awesome_flutter: ^10.12.0
-  device_info: ^2.0.2
+  device_info_plus: ^10.0.0
   intl: ^0.20.2
   firebase_messaging: ^16.1.1
   rxdart: ^0.28.0
   intro_views_flutter: ^3.2.0
   dio: ^5.9.1
-
+  flutter_secure_storage: ^10.0.0
+  local_auth: ^3.0.1
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

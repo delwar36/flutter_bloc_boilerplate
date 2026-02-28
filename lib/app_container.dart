@@ -1,10 +1,10 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:basic_app/blocs/bloc.dart';
-import 'package:basic_app/configs/config.dart';
-import 'package:basic_app/models/model.dart';
-// import 'package:basic_app/utils/utils.dart';
+import 'package:bloc_boilerplate/blocs/bloc.dart';
+import 'package:bloc_boilerplate/configs/config.dart';
+import 'package:bloc_boilerplate/models/model.dart';
+import 'package:bloc_boilerplate/ui/ui.dart';
 
 class AppContainer extends StatefulWidget {
   const AppContainer({Key? key}) : super(key: key);
@@ -52,25 +52,24 @@ class _AppContainerState extends State<AppContainer> {
       },
       child: BlocBuilder<AuthenticationCubit, AuthenticationState>(
         builder: (context, authentication) {
-          // ignore: unused_local_variable
-          final authenticated = authentication != AuthenticationState.fail;
-          return Scaffold(
-            body: Container(
-              child: Center(
-                child: Text("Your App Widgets Here"),
+          if (authentication == AuthenticationState.success) {
+            return Scaffold(
+              body: Container(
+                child: Center(child: Text("Your App Widgets Here")),
               ),
-            ),
-            floatingActionButton: FloatingActionButton(
-              backgroundColor: Theme.of(context).primaryColor,
-              onPressed: () {
-                //
-              },
-              child: const Icon(
-                Icons.add,
-                color: Colors.white,
+              floatingActionButton: FloatingActionButton(
+                backgroundColor: Theme.of(context).primaryColor,
+                onPressed: () {
+                  //
+                },
+                child: const Icon(Icons.add, color: Colors.white),
               ),
-            ),
-          );
+            );
+          }
+          if (authentication == AuthenticationState.loading) {
+            return const SplashScreen();
+          }
+          return const LoginScreen();
         },
       ),
     );
