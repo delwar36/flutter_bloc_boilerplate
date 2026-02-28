@@ -6,9 +6,10 @@ class SecureStorage {
   static const String token = 'token';
   static const String account = 'account';
   static const String password = 'password';
+  static const String user = 'user';
 
   static Future<void> setSecureStorage() async {
-    instance = const FlutterSecureStorage(aOptions: AndroidOptions());
+    instance = const FlutterSecureStorage();
   }
 
   ///Singleton factory

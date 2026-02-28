@@ -1,1 +1,1 @@
-enum AuthenticationState { loading, success, fail, empty }
+enum AuthenticationState { loading, success, fail, empty, locked }

@@ -12,6 +12,7 @@ class UserModel {
   late int total;
   late final String token;
   late String email;
+  String? password;
 
   UserModel({
     required this.id,
@@ -27,6 +28,7 @@ class UserModel {
     required this.total,
     required this.token,
     required this.email,
+    this.password,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -43,7 +45,8 @@ class UserModel {
       comment: int.tryParse('${json['total_comment']}') ?? 0,
       total: json['total'] ?? 0,
       token: json['token'] ?? "Unknown",
-      email: json['user_email'] ?? 'Unknown',
+      email: json['email'] ?? 'Unknown',
+      password: json['password'] ?? '', // For local storage only
     );
   }
 
@@ -98,7 +101,8 @@ class UserModel {
       'total_comment': rate,
       'total': total,
       'token': token,
-      'user_email': email
+      'email': email,
+      'password': password,
     };
   }
 }

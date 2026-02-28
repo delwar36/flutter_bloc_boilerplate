@@ -1,3 +1,4 @@
+import 'package:bloc_boilerplate/ui/screens/login/login.dart';
 import 'package:flutter/material.dart';
 // import 'package:bloc_boilerplate/models/model.dart';
 // import 'package:bloc_boilerplate/screens/screen.dart';
@@ -13,7 +14,7 @@ class Routes {
   static const String discovery = "/discovery";
   static const String wishList = "/wishList";
   static const String account = "/account";
-  static const String signIn = "/signIn";
+  static const String login = "/login";
   static const String signUp = "/signUp";
   static const String forgotPassword = "/forgotPassword";
   static const String productDetail = "/productDetail";
@@ -280,6 +281,13 @@ class Routes {
       //     },
       //     fullscreenDialog: true,
       //   );
+
+      case login:
+        return MaterialPageRoute(
+          builder: (context) {
+            return const LoginScreen();
+          },
+        );
 
       default:
         return MaterialPageRoute(

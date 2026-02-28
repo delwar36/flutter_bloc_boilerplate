@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+// import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:bloc_boilerplate/models/model.dart';
 import 'package:bloc_boilerplate/repository/repository.dart';
 
@@ -39,7 +39,7 @@ class UserCubit extends Cubit<UserModel?> {
 
   ///Event delete user
   void onDeleteUser() {
-    FirebaseMessaging.instance.deleteToken();
+    // FirebaseMessaging.instance.deleteToken();
     UserRepository.deleteUser();
     emit(null);
   }

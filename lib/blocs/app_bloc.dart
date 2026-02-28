@@ -9,7 +9,6 @@ class AppBloc {
   static final languageCubit = LanguageCubit();
   static final themeCubit = ThemeCubit();
   static final messageBloc = MessageBloc();
-  static final loginCubit = LoginCubit();
 
   static final List<BlocProvider> providers = [
     BlocProvider<ApplicationCubit>(create: (context) => applicationCubit),
@@ -17,7 +16,6 @@ class AppBloc {
     BlocProvider<LanguageCubit>(create: (context) => languageCubit),
     BlocProvider<ThemeCubit>(create: (context) => themeCubit),
     BlocProvider<AuthenticationCubit>(create: (context) => authenticateCubit),
-    BlocProvider<LoginCubit>(create: (context) => loginCubit),
     BlocProvider<MessageBloc>(create: (context) => messageBloc),
   ];
 
@@ -27,7 +25,6 @@ class AppBloc {
     languageCubit.close();
     themeCubit.close();
     authenticateCubit.close();
-    loginCubit.close();
     messageBloc.close();
   }
 

@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
+// import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:bloc_boilerplate/models/model.dart';
 import 'package:bloc_boilerplate/utils/utils.dart';
@@ -48,40 +48,10 @@ class UtilOther {
   }
 
   static Future<String?> getDeviceToken() async {
-    await FirebaseMessaging.instance.requestPermission();
-    return await FirebaseMessaging.instance.getToken();
+    // await FirebaseMessaging.instance.requestPermission();
+    // return await FirebaseMessaging.instance.getToken();
+    return "";
   }
-
-  // static Map<String, dynamic> buildFilterParams(FilterModel filter) {
-  //   Map<String, dynamic> params = {
-  //     "category": filter.category.map((item) {
-  //       return item.id;
-  //     }).toList(),
-  //     "feature": filter.feature.map((item) {
-  //       return item.id;
-  //     }).toList(),
-  //   };
-  //   if (filter.location != null) {
-  //     params['location'] = filter.location!.id;
-  //   }
-  //   if (filter.area != null) {
-  //     params['location'] = filter.area!.id;
-  //   }
-  //   if (filter.minPrice != null) {
-  //     params['price_min'] = filter.minPrice!.toInt();
-  //   }
-  //   if (filter.maxPrice != null) {
-  //     params['price_max'] = filter.minPrice!.toInt();
-  //   }
-  //   if (filter.color != null) {
-  //     params['color'] = filter.color;
-  //   }
-  //   if (filter.sort != null) {
-  //     params['orderby'] = filter.sort!.value;
-  //     params['order'] = filter.sort!.field;
-  //   }
-  //   return params;
-  // }
 
   ///Singleton factory
   static final UtilOther _instance = UtilOther._internal();

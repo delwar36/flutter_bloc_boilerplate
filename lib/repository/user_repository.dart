@@ -25,6 +25,11 @@ class UserRepository {
     return null;
   }
 
+  static Future<UserModel?> loginDemo() async {
+    await Future.delayed(const Duration(seconds: 1));
+    return Application.demoUser;
+  }
+
   ///Fetch api validToken
   static Future<bool> validateToken() async {
     final response = await UserApi.requestValidateToken();
@@ -104,16 +109,16 @@ class UserRepository {
   }
 
   ///Save User
-  static Future<bool> saveUser({required UserModel user}) async {
-    return await UtilPreferences.setString(
-      Preferences.user,
+  static Future<void> saveUser({required UserModel user}) async {
+    return await UtilSecureStorage.write(
+      SecureStorage.user,
       jsonEncode(user.toJson()),
     );
   }
 
   ///Load User
   static Future<UserModel?> loadUser() async {
-    final result = UtilPreferences.getString(Preferences.user);
+    final result = await UtilSecureStorage.read(SecureStorage.user);
     if (result != null) {
       return UserModel.fromJson(jsonDecode(result));
     }
@@ -131,7 +136,7 @@ class UserRepository {
   }
 
   ///Delete User
-  static Future<bool> deleteUser() async {
-    return await UtilPreferences.remove(Preferences.user);
+  static Future<void> deleteUser() async {
+    return await UtilSecureStorage.delete(SecureStorage.user);
   }
 }
