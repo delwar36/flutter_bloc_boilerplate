@@ -1,5 +1,5 @@
 class DeviceModel {
-  String uuid;
+  String? uuid;
   String? name;
   String model;
   String version;
@@ -8,7 +8,7 @@ class DeviceModel {
   bool? used;
 
   DeviceModel({
-    required this.uuid,
+    this.uuid,
     this.name,
     required this.model,
     required this.version,
@@ -16,4 +16,14 @@ class DeviceModel {
     required this.type,
     this.used,
   });
+  Map<String, dynamic> toJson() {
+    return {
+      "uuid": uuid,
+      "name": name,
+      "model": model,
+      "version": version,
+      "token": token,
+      "type": type,
+    };
+  }
 }

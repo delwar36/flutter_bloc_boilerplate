@@ -1,4 +1,4 @@
-import 'package:basic_app/utils/utils.dart';
+import 'package:bloc_boilerplate/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 class ThemeModel {

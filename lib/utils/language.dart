@@ -1,4 +1,4 @@
-import 'package:basic_app/configs/config.dart';
+import 'package:bloc_boilerplate/configs/config.dart';
 
 class UtilLanguage {
   ///Get Language Global Language Name

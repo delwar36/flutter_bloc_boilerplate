@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:basic_app/app.dart';
-import 'package:basic_app/utils/utils.dart';
+import 'package:bloc_boilerplate/app.dart';
+import 'package:bloc_boilerplate/utils/utils.dart';
 
 class AppBlocObserver extends BlocObserver {
   @override

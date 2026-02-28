@@ -1,6 +1,6 @@
-import 'package:basic_app/models/model.dart';
+import 'package:bloc_boilerplate/models/model.dart';
 import 'package:flutter/material.dart';
-import 'package:basic_app/utils/utils.dart';
+import 'package:bloc_boilerplate/utils/utils.dart';
 
 enum DarkOption { dynamic, alwaysOn, alwaysOff }
 
@@ -13,7 +13,7 @@ class AppTheme {
     "ProximaNova",
     "Raleway",
     "Roboto",
-    "Merriweather"
+    "Merriweather",
   ];
 
   ///Default Theme
@@ -30,16 +30,8 @@ class AppTheme {
       "primary": Colors.blue.toHex,
       "secondary": Colors.blueAccent.toHex,
     },
-    {
-      "name": "green",
-      "primary": 'ff82B541',
-      "secondary": "ffff8a65",
-    },
-    {
-      "name": "orange",
-      "primary": 'fff4a261',
-      "secondary": "ff2A9D8F",
-    }
+    {"name": "green", "primary": 'ff82B541', "secondary": "ffff8a65"},
+    {"name": "orange", "primary": 'fff4a261', "secondary": "ff2A9D8F"},
   ].map((item) => ThemeModel.fromJson(item)).toList();
 
   ///Dark Theme option

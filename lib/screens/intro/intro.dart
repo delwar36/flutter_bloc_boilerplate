@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intro_views_flutter/intro_views_flutter.dart';
-import 'package:basic_app/blocs/bloc.dart';
-import 'package:basic_app/configs/config.dart';
-import 'package:basic_app/utils/utils.dart';
+import 'package:bloc_boilerplate/blocs/bloc.dart';
+import 'package:bloc_boilerplate/configs/config.dart';
+import 'package:bloc_boilerplate/utils/utils.dart';
 
 class Intro extends StatefulWidget {
   const Intro({Key? key}) : super(key: key);

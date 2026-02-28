@@ -1,9 +1,9 @@
-import 'package:basic_app/repository/repository.dart';
+import 'package:bloc_boilerplate/repository/repository.dart';
 import 'package:bloc/bloc.dart';
-import 'package:basic_app/blocs/bloc.dart';
-import 'package:basic_app/configs/config.dart';
-import 'package:basic_app/models/model.dart';
-// import 'package:basic_app/repository/repository.dart';
+import 'package:bloc_boilerplate/blocs/bloc.dart';
+import 'package:bloc_boilerplate/configs/config.dart';
+import 'package:bloc_boilerplate/models/model.dart';
+// import 'package:bloc_boilerplate/repository/repository.dart';
 
 class AuthenticationCubit extends Cubit<AuthenticationState> {
   AuthenticationCubit() : super(AuthenticationState.loading);

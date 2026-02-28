@@ -1,10 +1,10 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:basic_app/blocs/bloc.dart';
-import 'package:basic_app/configs/config.dart';
-import 'package:basic_app/models/model.dart';
-// import 'package:basic_app/utils/utils.dart';
+import 'package:bloc_boilerplate/blocs/bloc.dart';
+import 'package:bloc_boilerplate/configs/config.dart';
+import 'package:bloc_boilerplate/models/model.dart';
+// import 'package:bloc_boilerplate/utils/utils.dart';
 
 class AppContainer extends StatefulWidget {
   const AppContainer({Key? key}) : super(key: key);
@@ -56,19 +56,14 @@ class _AppContainerState extends State<AppContainer> {
           final authenticated = authentication != AuthenticationState.fail;
           return Scaffold(
             body: Container(
-              child: Center(
-                child: Text("Your App Widgets Here"),
-              ),
+              child: Center(child: Text("Your App Widgets Here")),
             ),
             floatingActionButton: FloatingActionButton(
               backgroundColor: Theme.of(context).primaryColor,
               onPressed: () {
                 //
               },
-              child: const Icon(
-                Icons.add,
-                color: Colors.white,
-              ),
+              child: const Icon(Icons.add, color: Colors.white),
             ),
           );
         },

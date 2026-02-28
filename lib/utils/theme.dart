@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:basic_app/configs/config.dart';
-import 'package:basic_app/models/model.dart';
+import 'package:bloc_boilerplate/configs/config.dart';
+import 'package:bloc_boilerplate/models/model.dart';
 
 class UtilTheme {
   static ThemeData getTheme({

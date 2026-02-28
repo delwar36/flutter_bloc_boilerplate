@@ -8,81 +8,14 @@ import '../utils/logger.dart';
 class HTTPManager {
   late final Dio dio;
 
-  HTTPManager._internal() {
-    BaseOptions baseOptions = BaseOptions(
-      baseUrl: Application.domain,
-      connectTimeout: const Duration(seconds: 10),
-      receiveTimeout: const Duration(seconds: 10),
-      contentType: Headers.formUrlEncodedContentType,
-      responseType: ResponseType.json,
-    );
-
-    dio = Dio(baseOptions);
-
-    dio.interceptors.add(
-      InterceptorsWrapper(
-        onRequest: (options, handler) {
-          Map<String, dynamic> headers = {
-            "Device-Id": Application.device?.uuid ?? '',
-            "Device-Name": utf8.encode(Application.device?.name ?? ''),
-            "Device-Model": Application.device?.model ?? '',
-            "Device-Version": Application.device?.version ?? '',
-            "Push-Token": Application.device?.token ?? '',
-            "Type": Application.device?.type ?? '',
-            "Lang": AppBloc.languageCubit.state.languageCode,
-          };
-          options.headers.addAll(headers);
-
-          UserModel? user = AppBloc.userCubit.state;
-          if (user != null) {
-            options.headers["Authorization"] = "Bearer ${user.token}";
-          } else {
-            options.headers.remove("Authorization");
-          }
-
-          UtilLogger.log("REQUEST[${options.method}]", options.uri);
-          return handler.next(options);
-        },
-        onResponse: (response, handler) {
-          UtilLogger.log(
-            "RESPONSE[${response.statusCode}]",
-            response.requestOptions.uri,
-          );
-          return handler.next(response);
-        },
-        onError: (DioException error, handler) async {
-          UtilLogger.log("ERROR[${error.type}]", error.message);
-
-          // Example Retry logic for connection issues (can be expanded)
-          if (_shouldRetry(error)) {
-            try {
-              final response = await _retry(error.requestOptions);
-              return handler.resolve(response);
-            } catch (e) {
-              return handler.next(error);
-            }
-          }
-
-          // Centralized Error Handling
-          final errorMessage = _handleDioError(error);
-          return handler.resolve(
-            Response(
-              requestOptions: error.requestOptions,
-              data: errorMessage,
-              statusCode: error.response?.statusCode,
-            ),
-          );
-        },
-      ),
-    );
-  }
-
+  ///Check Retry Logic
   bool _shouldRetry(DioException error) {
     return error.type == DioExceptionType.connectionTimeout ||
         error.type == DioExceptionType.sendTimeout ||
         error.type == DioExceptionType.receiveTimeout;
   }
 
+  ///Retry Logic
   Future<Response> _retry(RequestOptions requestOptions) {
     final options = Options(
       method: requestOptions.method,
@@ -132,7 +65,8 @@ class HTTPManager {
         },
       );
       return response.data;
-    } catch (e) {
+    } catch (e, stackTrace) {
+      UtilLogger.logError("POST ERROR", e, stackTrace: stackTrace);
       return {"success": false, "message": "unexpected_error"};
     }
   }
@@ -150,14 +84,93 @@ class HTTPManager {
         options: options,
       );
       return response.data;
-    } catch (e) {
+    } catch (e, stackTrace) {
+      UtilLogger.logError("GET ERROR", e, stackTrace: stackTrace);
       return {"success": false, "message": "unexpected_error"};
     }
   }
 
+  // 1. Static private instance
+  static final HTTPManager _instance = HTTPManager._internal();
+
+  ///Singleton factory
   factory HTTPManager() {
-    return httpManager;
+    return _instance;
+  }
+
+  ///HTTPManager Constructor with initialization
+  HTTPManager._internal() {
+    BaseOptions baseOptions = BaseOptions(
+      baseUrl: Application.domain,
+      connectTimeout: const Duration(seconds: 10),
+      receiveTimeout: const Duration(seconds: 10),
+      contentType: Headers.formUrlEncodedContentType,
+      responseType: ResponseType.json,
+    );
+
+    dio = Dio(baseOptions);
+
+    dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) {
+          Map<String, dynamic> headers = {
+            "Device-Id": Application.device?.uuid ?? '',
+            "Device-Name": utf8.encode(Application.device?.name ?? ''),
+            "Device-Model": Application.device?.model ?? '',
+            "Device-Version": Application.device?.version ?? '',
+            "Push-Token": Application.device?.token ?? '',
+            "Type": Application.device?.type ?? '',
+            "Lang": AppBloc.languageCubit.state.languageCode,
+          };
+          options.headers.addAll(headers);
+
+          UserModel? user = AppBloc.userCubit.state;
+          if (user != null) {
+            options.headers["Authorization"] = "Bearer ${user.token}";
+          } else {
+            options.headers.remove("Authorization");
+          }
+
+          UtilLogger.log("REQUEST[${options.method}]", options.uri);
+          return handler.next(options);
+        },
+        onResponse: (response, handler) {
+          UtilLogger.log(
+            "RESPONSE[${response.statusCode}]",
+            response.requestOptions.uri,
+          );
+          return handler.next(response);
+        },
+        onError: (DioException error, handler) async {
+          UtilLogger.logError(
+            "ERROR[${error.type}]",
+            error.message,
+            stackTrace: error.stackTrace,
+          );
+
+          // Example Retry logic for connection issues (can be expanded)
+          if (_shouldRetry(error)) {
+            try {
+              final response = await _retry(error.requestOptions);
+              return handler.resolve(response);
+            } catch (e) {
+              return handler.next(error);
+            }
+          }
+
+          // Centralized Error Handling
+          final errorMessage = _handleDioError(error);
+          return handler.resolve(
+            Response(
+              requestOptions: error.requestOptions,
+              data: errorMessage,
+              statusCode: error.response?.statusCode,
+            ),
+          );
+        },
+      ),
+    );
   }
 }
 
-final HTTPManager httpManager = HTTPManager._internal();
+final HTTPManager httpManager = HTTPManager();

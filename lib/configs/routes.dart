@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:basic_app/models/model.dart';
-// import 'package:basic_app/screens/screen.dart';
+// import 'package:bloc_boilerplate/models/model.dart';
+// import 'package:bloc_boilerplate/screens/screen.dart';
 
 class RouteArguments<T> {
   final T? item;

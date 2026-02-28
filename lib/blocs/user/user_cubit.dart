@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:basic_app/models/model.dart';
-import 'package:basic_app/repository/repository.dart';
+import 'package:bloc_boilerplate/models/model.dart';
+import 'package:bloc_boilerplate/repository/repository.dart';
 
 class UserCubit extends Cubit<UserModel?> {
   UserCubit() : super(null);

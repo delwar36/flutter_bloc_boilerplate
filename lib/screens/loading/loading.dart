@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:basic_app/configs/config.dart';
+import 'package:bloc_boilerplate/configs/config.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -44,7 +44,7 @@ class _SplashScreenState extends State<SplashScreen> {
               height: 26,
               child: CircularProgressIndicator(strokeWidth: 2),
             ),
-          )
+          ),
         ],
       ),
     );
