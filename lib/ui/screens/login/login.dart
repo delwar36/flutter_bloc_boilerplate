@@ -88,7 +88,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor.withOpacity(0.1),
+                        color: Theme.of(
+                          context,
+                        ).primaryColor.withValues(alpha: 0.1),
                         shape: BoxShape.circle,
                       ),
                       child: Icon(
@@ -217,7 +219,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Icons.fingerprint,
                           color: Theme.of(
                             context,
-                          ).primaryColor.withOpacity(0.8),
+                          ).primaryColor.withValues(alpha: 0.8),
                         ),
                         onPressed: () {
                           AppBloc.loginCubit.onBiometricLogin();

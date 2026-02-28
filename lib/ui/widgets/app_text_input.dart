@@ -45,7 +45,7 @@ class AppTextInput extends StatelessWidget {
               fontSize: 14,
               color: Theme.of(
                 context,
-              ).textTheme.bodySmall?.color?.withOpacity(0.6),
+              ).textTheme.bodySmall?.color?.withValues(alpha: 0.6),
             ),
           ),
           const SizedBox(height: 8),
@@ -69,11 +69,11 @@ class AppTextInput extends StatelessWidget {
             prefixIcon: prefixIcon,
             prefixIconColor: Theme.of(
               context,
-            ).iconTheme.color?.withOpacity(0.5),
+            ).iconTheme.color?.withValues(alpha: 0.5),
             suffixIcon: suffixIcon,
             suffixIconColor: Theme.of(
               context,
-            ).iconTheme.color?.withOpacity(0.5),
+            ).iconTheme.color?.withValues(alpha: 0.5),
             errorText: errorText,
             filled: true,
             fillColor: Theme.of(context).brightness == Brightness.dark
